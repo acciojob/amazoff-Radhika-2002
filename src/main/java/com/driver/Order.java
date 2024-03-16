@@ -6,19 +6,25 @@ public class Order {
     private int deliveryTime;
 
     public Order(String id, String deliveryTime) {
-        this.id = id;
-        // Convert delivery time to minutes since midnight
-        String[] timeComponents = deliveryTime.split(":");
-        int hours = Integer.parseInt(timeComponents[0]);
-        int minutes = Integer.parseInt(timeComponents[1]);
-        this.deliveryTime = hours * 60 + minutes;
+
+        this.id=id;
+        String time[]=deliveryTime.split(":");
+        this.deliveryTime=Integer.parseInt(time[1])+60*Integer.parseInt(time[0]);
+        // The deliveryTime has to converted from string to int and then stored in the attribute
+        //deliveryTime  = HH*60 + MM
     }
 
     public String getId() {
         return id;
     }
 
-    public int getDeliveryTime() {
-        return deliveryTime;
+    public int getDeliveryTime() {return deliveryTime;}
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id='" + id + '\'' +
+                ", deliveryTime=" + deliveryTime +
+                '}';
     }
 }
